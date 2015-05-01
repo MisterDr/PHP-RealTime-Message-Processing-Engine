@@ -42,7 +42,7 @@ class MessageProcessor {
 		$pubsub->subscribe('control_channel', 'messages');
 
 		// Initialize the WebSocket client
-		$dispatcher_client = new Client("ws://localhost:6737");
+		$dispatcher_client = new Client("ws://{$configuration->socket_host}:{$configuration->socket_port}");
 
 		foreach ($pubsub as $message)
 		{
