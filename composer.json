@@ -1,0 +1,19 @@
+{
+  "name": "Message Processor",
+  "description": "Message processor",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Djenad Razic",
+      "email": "DjenadRazic@gmail.com"
+    }
+  ],
+  "require" : {
+    "predis/predis": "1.1.*@dev",
+    "textalk/websocket": "1.0.*"
+  },
+  "autoload": {
+    "classmap": [ "app" ]
+  }
+}
