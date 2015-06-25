@@ -18,6 +18,9 @@ Manager to manage the processes
 Realtime chart display with sample data
 ![alt text](http://i.imgur.com/Em2fBli.png "Chart")
 
+Process flowchart
+![alt text](http://i.imgur.com/T90Xwhd.png "Process")
+
 
 ## More features
 
