@@ -12,3 +12,4 @@ include "../vendor/autoload.php";
 
 // Setup the small router
 $router = new Routes();
+$router->process();

@@ -17,23 +17,32 @@ class Routes
 	public function __construct()
 	{
 		$this->configuration = new Config();
-
-		$this->setupRoutes();
 	}
 
 	/**
-	 * Setup the routes and redirect according to request
+	 * Setup the routes and process according to request data
 	 *
 	 * @author Djenad Razic
+	 * @param string $routes Routes to determine
+	 * @return mixed|null
 	 */
-	protected function setupRoutes()
+	public function process($routes = NULL)
 	{
-		// Decimate it
-		// No other than REST? Well, time to keep up with time guyz
-		$routes = array_reverse(explode('/', $_SERVER['REQUEST_URI']));
+		// Check if not user defined routes exists
+		if ($routes === NULL)
+		{
+			// Decimate it
+			// No other than REST? Well, time to keep up with time guyz
+			$routes = array_reverse(explode('/', $_SERVER['REQUEST_URI']));
 
-		// I don't like you
-		array_pop($routes);
+			// I don't like you
+			array_pop($routes);
+		}
+		else
+		{
+			// Invert it
+			$routes = array_reverse($routes);
+		}
 
 		// Get bare class name and try to use our controller path
 		$controller_name = "app\\controllers\\" . ucwords(array_pop($routes));
@@ -47,7 +56,9 @@ class Routes
 		// If method exists call it
 		if (method_exists($instance, $method))
 		{
-			call_user_func_array(array($instance, $method), $routes);
+			return call_user_func_array(array($instance, $method), $routes);
 		}
+
+		return NULL;
 	}
 }

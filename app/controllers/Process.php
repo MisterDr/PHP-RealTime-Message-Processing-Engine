@@ -52,9 +52,12 @@ class Process {
 
 		// This receiver will dispatch the WebSocket processor and act as interaction between
 		// the Redis messages and WebSocket client
-		$manager->addProcess('MessageDispatcher');
+		//$manager->addProcess('MessageDispatcher');
 
 		// Spawn the message processor to retrieve the messages from Redis and dispatch it to the WebSockets mediator
-		$manager->addProcess('MessageProcessor');
+		//$manager->addProcess('MessageProcessor');
+
+		// Spawn the web socket controller process
+		$manager->addProcess('WebSocketController');
 	}
 }

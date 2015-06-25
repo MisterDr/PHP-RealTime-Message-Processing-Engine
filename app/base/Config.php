@@ -24,4 +24,24 @@ class Config
 
 	// Port for Web Socket
 	public $socket_port = '6737';
+
+	// Port for web socket controller
+	public $socket_controller_port = '3767';
+
+	// Base path name
+	public $base_folder = "MessageProcessor";
+
+	/**
+	 * Get base path
+	 *
+	 * @author Djenad Razic
+	 */
+	public function getBasePath()
+	{
+		$path = explode('/', __DIR__);
+
+		$dir = array_search($this->base_folder, $path);
+
+		return implode('/', array_slice($path, 0, $dir + 1));
+	}
 }

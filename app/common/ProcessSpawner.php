@@ -37,6 +37,7 @@ class ProcessSpawner {
 		if (isset($class_name) && isset($process_path))
 		{
 
+			//TODO: Fix
 			//$path = $_SERVER['DOCUMENT_ROOT'] . "../" . $this->process_path;
 
 			$path = '/Volumes/mrdr/develop/MessageProcessor/' . $this->process_path;
