@@ -9,7 +9,6 @@ This lightweight framework uses the following parts for the example features:
  - Process manager (Manage the PHP Processes in separate threads)
  - Small REST controller engine
 
-
 ## Screens
 Manager to manage the processes
 
@@ -20,7 +19,6 @@ Realtime chart display with sample data
 
 Process flowchart
 ![alt text](http://i.imgur.com/T90Xwhd.png "Process")
-
 
 ## More features
 
@@ -36,13 +34,18 @@ Process flowchart
    - Cross Domain/Platform caching with Redis
    - PHPUnit testing
 
-
 ### Planned features
   
    - BootSnip Components with backend support
    - Docker support
    - Grid computing support
    - High performance computing using the CUDA PHP / OpenCV
+   
+#### Hot smokin' planned features
+ 
+   - Advanced code generator based on NLP
+   - Evolving code engine / Asynchronio Reasoning Engine (Generating code through NLP, context reasoning, self modifying and self learning)
+   - Sample to generate Contact list program with search capability
 
 ## Folder structure
 
@@ -58,3 +61,7 @@ Process flowchart
      - css              : CSS files
      - fonts            : Fonts
      - js               : JS
+     
+# TODO
+
+    + Install pthreads

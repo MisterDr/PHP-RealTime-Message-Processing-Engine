@@ -4,8 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0a22a1ecfdc4751cba42fc742fc60031",
+    "hash": "f30d80b899180407d7dc3038b962c9d9",
     "packages": [
+        {
+            "name": "agentile/php-stanford-nlp",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/agentile/PHP-Stanford-NLP.git",
+                "reference": "51f99f1aaa1c3d5822fe634346b2b4b33a7a6223"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/agentile/PHP-Stanford-NLP/zipball/51f99f1aaa1c3d5822fe634346b2b4b33a7a6223",
+                "reference": "51f99f1aaa1c3d5822fe634346b2b4b33a7a6223",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "StanfordNLP": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthony Gentile",
+                    "email": "asgentile@gmail.com",
+                    "homepage": "http://agentile.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP interface to Stanford NLP Tools",
+            "homepage": "https://github.com/agentile/PHP-Stanford-NLP",
+            "keywords": [
+                "ner",
+                "nlp",
+                "parser",
+                "pos",
+                "stanford"
+            ],
+            "time": "2014-10-18 15:24:25"
+        },
         {
             "name": "gabordemooij/redbean",
             "version": "dev-master",
@@ -46,6 +92,48 @@
                 "orm"
             ],
             "time": "2015-05-22 20:46:45"
+        },
+        {
+            "name": "google/apiclient",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/google/google-api-php-client.git",
+                "reference": "239435e5a7cf5c9b4218322da8ec13faf194c164"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/239435e5a7cf5c9b4218322da8ec13faf194c164",
+                "reference": "239435e5a7cf5c9b4218322da8ec13faf194c164",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Client library for Google APIs",
+            "homepage": "http://developers.google.com/api-client-library/php",
+            "keywords": [
+                "google"
+            ],
+            "time": "2015-07-01 20:07:32"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -171,12 +259,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "30539a698a833df93aa5f6cccd11becf20745b9a"
+                "reference": "e9babd47e287992ece27cfc97b6e10bfac908943"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/30539a698a833df93aa5f6cccd11becf20745b9a",
-                "reference": "30539a698a833df93aa5f6cccd11becf20745b9a",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/e9babd47e287992ece27cfc97b6e10bfac908943",
+                "reference": "e9babd47e287992ece27cfc97b6e10bfac908943",
                 "shasum": ""
             },
             "require": {
@@ -245,7 +333,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2015-06-13 12:22:01"
+            "time": "2015-06-25 18:33:43"
         },
         {
             "name": "league/plates",
@@ -298,6 +386,358 @@
                 "views"
             ],
             "time": "2014-10-21 12:06:12"
+        },
+        {
+            "name": "memio/linter",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/memio/linter.git",
+                "reference": "0daf993184b6eae7ed6fdbd94f3e7a6347e4c0f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/memio/linter/zipball/0daf993184b6eae7ed6fdbd94f3e7a6347e4c0f6",
+                "reference": "0daf993184b6eae7ed6fdbd94f3e7a6347e4c0f6",
+                "shasum": ""
+            },
+            "require": {
+                "memio/model": "~1.0",
+                "memio/validator": "~1.0",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "ciaranmcnulty/phpspec-typehintedmethods": "~1.1",
+                "fabpot/php-cs-fixer": "~1.6",
+                "phpspec/phpspec": "~2.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Memio\\Linter\\": "src/Memio/Linter"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Loïc Chardonnet",
+                    "email": "loic.chardonnet@gmail.com",
+                    "homepage": "http://gnugat.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Memio's linter, a set of constraint that check models for syntax errors",
+            "homepage": "http://memio.github.io/memio",
+            "keywords": [
+                "code",
+                "generator",
+                "php"
+            ],
+            "time": "2015-04-29 17:22:18"
+        },
+        {
+            "name": "memio/memio",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/memio/memio.git",
+                "reference": "615078a8543c24bdeda3799a80bf65d400db69e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/memio/memio/zipball/615078a8543c24bdeda3799a80bf65d400db69e3",
+                "reference": "615078a8543c24bdeda3799a80bf65d400db69e3",
+                "shasum": ""
+            },
+            "require": {
+                "memio/linter": "~1.0",
+                "memio/model": "~1.3",
+                "memio/pretty-printer": "~1.0",
+                "memio/twig-template-engine": "~1.2",
+                "memio/validator": "~1.0",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "~1.6",
+                "phpunit/phpunit": "~4.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Memio\\Memio\\": "src/Memio/Memio",
+                    "Memio\\Memio\\Config\\": "config"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Loïc Chardonnet",
+                    "email": "loic.chardonnet@gmail.com",
+                    "homepage": "http://gnugat.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A highly opinionated PHP code generator library",
+            "homepage": "http://memio.github.io/memio",
+            "keywords": [
+                "code",
+                "generator",
+                "php"
+            ],
+            "time": "2015-05-14 17:58:48"
+        },
+        {
+            "name": "memio/model",
+            "version": "v1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/memio/model.git",
+                "reference": "d913aaf49e041d5640c51b28d2e1875dbab10472"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/memio/model/zipball/d913aaf49e041d5640c51b28d2e1875dbab10472",
+                "reference": "d913aaf49e041d5640c51b28d2e1875dbab10472",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "~1.6",
+                "phpspec/phpspec": "~2.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Memio\\Model\\": "src/Memio/Model"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Loïc Chardonnet",
+                    "email": "loic.chardonnet@gmail.com",
+                    "homepage": "http://gnugat.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Memio's models, used to describe the code to generate",
+            "homepage": "http://memio.github.io/memio",
+            "keywords": [
+                "code",
+                "generator",
+                "php"
+            ],
+            "time": "2015-06-04 18:00:31"
+        },
+        {
+            "name": "memio/pretty-printer",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/memio/pretty-printer.git",
+                "reference": "49426178e82f2944e1786e7b4c00e8dee4929576"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/memio/pretty-printer/zipball/49426178e82f2944e1786e7b4c00e8dee4929576",
+                "reference": "49426178e82f2944e1786e7b4c00e8dee4929576",
+                "shasum": ""
+            },
+            "require": {
+                "memio/model": "~1.0",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "ciaranmcnulty/phpspec-typehintedmethods": "~1.1",
+                "fabpot/php-cs-fixer": "~1.6",
+                "phpspec/phpspec": "~2.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Memio\\PrettyPrinter\\": "src/Memio/PrettyPrinter"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Loïc Chardonnet",
+                    "email": "loic.chardonnet@gmail.com",
+                    "homepage": "http://gnugat.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Memio's PrettyPrinter, used to generate PHP code from given Model",
+            "homepage": "http://memio.github.io/memio",
+            "keywords": [
+                "code",
+                "generator",
+                "php"
+            ],
+            "time": "2015-04-29 17:54:06"
+        },
+        {
+            "name": "memio/twig-template-engine",
+            "version": "v1.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/memio/twig-template-engine.git",
+                "reference": "c42964ca4cba99d7ff8c85f867275988d9a640ed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/memio/twig-template-engine/zipball/c42964ca4cba99d7ff8c85f867275988d9a640ed",
+                "reference": "c42964ca4cba99d7ff8c85f867275988d9a640ed",
+                "shasum": ""
+            },
+            "require": {
+                "memio/model": "~1.3",
+                "memio/pretty-printer": "~1.0",
+                "php": ">=5.3.3",
+                "twig/twig": "~1.18"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "~1.6",
+                "phpspec/phpspec": "~2.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Memio\\TwigTemplateEngine\\": "src/Memio/TwigTemplateEngine",
+                    "Memio\\TwigTemplateEngine\\Config\\": "config"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Loïc Chardonnet",
+                    "email": "loic.chardonnet@gmail.com",
+                    "homepage": "http://gnugat.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Memio's Twig templates, used to generate PHP code from given Model",
+            "homepage": "http://memio.github.io/memio",
+            "keywords": [
+                "code",
+                "generator",
+                "php",
+                "templates",
+                "twig"
+            ],
+            "time": "2015-06-30 11:32:27"
+        },
+        {
+            "name": "memio/validator",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/memio/validator.git",
+                "reference": "832b9f2376f7a25320e41088bb889508417b767c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/memio/validator/zipball/832b9f2376f7a25320e41088bb889508417b767c",
+                "reference": "832b9f2376f7a25320e41088bb889508417b767c",
+                "shasum": ""
+            },
+            "require": {
+                "memio/model": "~1.0",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "ciaranmcnulty/phpspec-typehintedmethods": "~1.1",
+                "fabpot/php-cs-fixer": "~1.6",
+                "phpspec/phpspec": "~2.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Memio\\Validator\\": "src/Memio/Validator"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Loïc Chardonnet",
+                    "email": "loic.chardonnet@gmail.com",
+                    "homepage": "http://gnugat.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Memio's validator, used to check built models again a pre-defined set of rules",
+            "homepage": "http://memio.github.io/memio",
+            "keywords": [
+                "code",
+                "generator",
+                "php"
+            ],
+            "time": "2015-04-21 06:39:21"
+        },
+        {
+            "name": "nlp-tools/nlp-tools",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/angeloskath/php-nlp-tools.git",
+                "reference": "12be6b61858b3054914b2678bc97ea2ebab92064"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/angeloskath/php-nlp-tools/zipball/12be6b61858b3054914b2678bc97ea2ebab92064",
+                "reference": "12be6b61858b3054914b2678bc97ea2ebab92064",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "NlpTools\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "WTFPL"
+            ],
+            "authors": [
+                {
+                    "name": "Angelos Katharopoulos",
+                    "email": "angelos@yourse.gr"
+                }
+            ],
+            "description": "NlpTools is a set of php 5.3+ classes for beginner to semi advanced natural language processing work.",
+            "keywords": [
+                "machine learning",
+                "nlp"
+            ],
+            "time": "2014-01-30 22:54:02"
         },
         {
             "name": "predis/predis",
@@ -533,12 +973,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tracy.git",
-                "reference": "002926fd49566175d8138592764d8a1277e857a1"
+                "reference": "6123c890bf8b645c73e9aaa61025f94f83b3444e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tracy/zipball/002926fd49566175d8138592764d8a1277e857a1",
-                "reference": "002926fd49566175d8138592764d8a1277e857a1",
+                "url": "https://api.github.com/repos/nette/tracy/zipball/6123c890bf8b645c73e9aaa61025f94f83b3444e",
+                "reference": "6123c890bf8b645c73e9aaa61025f94f83b3444e",
                 "shasum": ""
             },
             "require": {
@@ -585,7 +1025,64 @@
                 "debugger",
                 "nette"
             ],
-            "time": "2015-06-20 14:15:40"
+            "time": "2015-06-30 13:44:49"
+        },
+        {
+            "name": "twig/twig",
+            "version": "v1.18.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "e8e6575abf6102af53ec283f7f14b89e304fa602"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/e8e6575abf6102af53ec283f7f14b89e304fa602",
+                "reference": "e8e6575abf6102af53ec283f7f14b89e304fa602",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.18-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
+                },
+                {
+                    "name": "Twig Team",
+                    "homepage": "http://twig.sensiolabs.org/contributors",
+                    "role": "Contributors"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "http://twig.sensiolabs.org",
+            "keywords": [
+                "templating"
+            ],
+            "time": "2015-06-06 23:31:24"
         }
     ],
     "packages-dev": [
@@ -754,16 +1251,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "2.1.6",
+            "version": "2.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "631e365cf26bb2c078683e8d9bcf8bc631ac4d44"
+                "reference": "07e27765596d72c378a6103e80da5d84e802f1e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/631e365cf26bb2c078683e8d9bcf8bc631ac4d44",
-                "reference": "631e365cf26bb2c078683e8d9bcf8bc631ac4d44",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/07e27765596d72c378a6103e80da5d84e802f1e4",
+                "reference": "07e27765596d72c378a6103e80da5d84e802f1e4",
                 "shasum": ""
             },
             "require": {
@@ -812,7 +1309,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-06-19 07:11:55"
+            "time": "2015-06-30 06:52:35"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1040,16 +1537,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.7.5",
+            "version": "4.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "f6701ef3faea759acd1910a7751d8d102a7fd5bc"
+                "reference": "0ebabb4cda7d066be8391dfdbaf57fe70ac9a99b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f6701ef3faea759acd1910a7751d8d102a7fd5bc",
-                "reference": "f6701ef3faea759acd1910a7751d8d102a7fd5bc",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0ebabb4cda7d066be8391dfdbaf57fe70ac9a99b",
+                "reference": "0ebabb4cda7d066be8391dfdbaf57fe70ac9a99b",
                 "shasum": ""
             },
             "require": {
@@ -1108,7 +1605,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-06-21 07:23:36"
+            "time": "2015-06-30 06:53:57"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1594,6 +2091,9 @@
         "tracy/tracy": 20,
         "stage1/docker-php": 20,
         "league/flysystem": 20,
+        "nlp-tools/nlp-tools": 20,
+        "agentile/php-stanford-nlp": 20,
+        "google/apiclient": 20,
         "phpunit/php-invoker": 20
     },
     "prefer-stable": false,

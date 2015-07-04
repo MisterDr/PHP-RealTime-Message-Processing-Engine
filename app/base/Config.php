@@ -7,6 +7,19 @@ namespace app\base;
 
 class Config
 {
+	// Installation files
+	const POS_URL = 'http://nlp.stanford.edu/downloads/stanford-postagger-2015-04-20.zip';
+	const POS_SAVE_PATH = 'app/are/external/pos/stanford-postagger-2015-04-20.zip';
+	const POS_PATH = 'app/are/external/pos/stanford-postagger-2015-04-20/';
+
+	const NER_URL = 'http://nlp.stanford.edu/software/stanford-ner-2015-04-20.zip';
+	const NER_SAVE_PATH = 'app/are/external/ner/stanford-ner-2015-04-20.zip';
+	const NER_PATH = 'app/are/external/ner/stanford-ner-2015-04-20/';
+
+	const PARSER_URL = 'http://nlp.stanford.edu/software/stanford-parser-full-2015-04-20.zip';
+	const PARSER_SAVE_PATH = 'app/are/external/parser/stanford-parser-full-2015-04-20.zip';
+	const PARSER_PATH = 'app/are/external/parser/stanford-parser-full-2015-04-20/';
+
 	// Processes path
 	public $process_path = 'message_service';
 

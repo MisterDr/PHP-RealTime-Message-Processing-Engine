@@ -16,7 +16,11 @@
     "league/plates": "3.*",
     "tracy/tracy": "dev-master",
     "stage1/docker-php": "@dev",
-    "league/flysystem": "dev-master"
+    "league/flysystem": "dev-master",
+    "nlp-tools/nlp-tools" : "dev-master",
+    "memio/memio" : "~1.0",
+    "agentile/php-stanford-nlp" : "dev-master",
+    "google/apiclient" : "dev-master"
   },
   "require-dev" : {
     "phpunit/phpunit": ">=4.2",
@@ -24,5 +28,8 @@
   },
   "autoload": {
     "classmap": [ "app" ]
+  },
+  "scripts": {
+    "post-install-cmd": "php \"app/are/scripts/StanfordInstall.php\""
   }
 }

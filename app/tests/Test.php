@@ -5,8 +5,6 @@
 
 namespace app\tests;
 
-
-
 use app\base\Config;
 use app\base\Routes;
 use RedBeanPHP\R;
