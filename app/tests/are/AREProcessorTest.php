@@ -16,6 +16,15 @@ class AREProcessorTest extends \PHPUnit_Framework_TestCase {
 		$processor = new AREProcessor();
 
 		$processor->process("create new class");
+		$processor->process("create new class with name MotorHead");
+
+		$processor->process("create new class with name MotorHead which has following properties: Test1, Test2, Prole.");
+
+
+		$processor->process("create new class using name MotorHead");
+
+		$processor->process("insert bottle in the asshole");
+
 
 		$processor->process("I wish to create new class");
 
@@ -30,11 +39,10 @@ class AREProcessorTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testStanfordParser()
 	{
-		return;
-		$context = new AREContext();
-
-		$context->parse("What does the fox say?");
-		//$context->nerTag("The Federal Reserve Bank of New York led by Timothy R. Geithner.");
-		$context->posTag("What does the fox say?");
+//		$context = new AREContext();
+//
+//		$context->parse("What does the fox say?");
+//		//$context->nerTag("The Federal Reserve Bank of New York led by Timothy R. Geithner.");
+//		$context->posTag("What does the fox say?");
 	}
 }

@@ -14,6 +14,17 @@ use StanfordNLP\POSTagger;
 
 class AREContext {
 
+	// TODO: more to go
+	const TYPED_DEPENDENCY_ROOT = 'root';
+	const TYPED_DEPENDENCY_AMOD = 'amod';
+
+	// Dobj's are actually commands which we are process
+	const TYPED_DEPENDENCY_DOBJ = 'dobj';
+
+	// Area of interest to extract command
+	const WORD_TYPE_VB = 'VB';
+	const WORD_TYPE_NN = 'NN';
+
 	/**
 	 * @var POSTagger
 	 */
