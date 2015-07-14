@@ -1,183 +1,223 @@
 <?php
 /**
+ * Very simple code generator
+ *
  * @author: Djenad Razic
  */
 
-namespace app;
+namespace app\base;
 
-
-use Memio\Memio\Config\Build;
-use Memio\Model\Argument;
-use Memio\Model\Constant;
-use Memio\Model\Contract;
-use Memio\Model\File;
-use Memio\Model\Method;
-use Memio\Model\Object;
-use Memio\Model\Phpdoc\ApiTag;
-use Memio\Model\Phpdoc\DeprecationTag;
-use Memio\Model\Phpdoc\Description;
-use Memio\Model\Phpdoc\LicensePhpdoc;
-use Memio\Model\Phpdoc\StructurePhpdoc;
-use Memio\Model\Property;
-use Memio\PrettyPrinter\PrettyPrinter;
-
+use League\Plates\Engine;
 
 class CodeGenerator {
 
-	const METHOD_ABSTRACT = 1;
-	const METHOD_FINAL = 2;
-	const METHOD_PRIVATE = 3;
-	const METHOD_PROTECTED = 4;
-	const METHOD_PUBLIC = 5;
-	const METHOD_STATIC = 6;
+	const METHOD_ABSTRACT   = 1;
+	const METHOD_FINAL      = 2;
+	const METHOD_PRIVATE    = 3;
+	const METHOD_PROTECTED  = 4;
+	const METHOD_PUBLIC     = 5;
+	const METHOD_STATIC     = 6;
+
+	const PROP_PRIVATE      = 1;
+	const PROP_PUBLIC       = 2;
+	const PROP_PROTECTED    = 3;
+	const PROP_STATIC       = 4;
 
 	/**
-	 * @var PrettyPrinter
+	 * @var Config
 	 */
-	protected $prettyPrinter;
+	protected $config;
+
+	/**
+	 * View path
+	 *
+	 * @var string
+	 */
+	protected $viewPath;
+
+	/**
+	 * View engine
+	 *
+	 * @var Engine
+	 */
+	protected $engine;
+
+	/**
+	 * Code structure
+	 *
+	 * @var array
+	 */
+	private $structure = array(
+		'classes' => array()
+	);
 
 	public function __construct()
 	{
-		$this->prettyPrinter = Build::prettyPrinter();
+		$this->config = new Config();
+		$this->viewPath = $this->config->getBasePath() . '/app/views/';
+
+		$this->engine = new Engine($this->viewPath);
 	}
 
 	/**
-	 * Generate doc block
+	 * Generate Class with specific name
 	 *
-	 * @param $doc
-	 * @param null $apiTag
+	 * @param $name
+	 * @param $comment array
 	 * @author Djenad Razic
-	 * @return StructurePhpdoc
 	 */
-	public function generateClassComment($doc, $apiTag = NULL)
+	public function addClass($name, $comment)
 	{
-		// Parse and crate description
-		$comments = explode('\n', $doc);
-		$description = Description::make($comments[0]);
-
-		// Remove first element
-		unset($comments[0]);
-
-		foreach ($comments as $comment)
-		{
-			if (empty($comment))
-			{
-				$description->addEmptyLine();
-			}
-			else
-			{
-				$description->addLine($comment);
-			}
-		}
-
-		$docBloc = StructurePhpdoc::make()->setDescription($description);
-
-		if ($apiTag !== NULL)
-		{
-			$docBloc->setApiTag(new ApiTag($apiTag));
-		}
-
-		return $docBloc;
+		$this->structure['classes'][$name] = array();
+		$this->structure['classes'][$name]['methods'] = array();
+		$this->structure['classes'][$name]['constants'] = array();
+		$this->structure['classes'][$name]['properties'] = array();
+		$this->structure['classes'][$name]['references'] = array();
+		$this->structure['classes'][$name]['namespace'] = "";
+		$this->structure['classes'][$name]['comment'] = $comment;
 	}
 
 	/**
-	 * Generate class object
+	 * Add method
 	 *
-	 * @param $name string
-	 * @param $constants mixed
-	 * @param $properties mixed
+	 * @param $class      string
+	 * @param $name       string
+	 * @param $types      array
+	 * @param $parameters array
+	 * @param $body       array
+	 * @param $comment    array
 	 * @author Djenad Razic
-	 * @return Object
 	 */
-	public function generateObject($name, $constants, $properties)
+	public function addMethod($class, $name, $types, $parameters, $body, $comment)
 	{
-		$object = new Object($name);
-
-		foreach ($constants as $key => $value)
-		{
-			$object->addConstant(new Constant($key, $value));
-		}
-
-		foreach ($properties as $property)
-		{
-			$object->addProperty(new Property($property));
-		}
-
-		return $object;
-	}
-
-	/**
-	 * Create method
-	 *
-	 * @param $name string
-	 * @param $arguments array
-	 * @param $types array
-	 * @param $body string
-	 * @author Djenad Razic
-	 * @return Method
-	 */
-	public function generateMethod($name, $arguments, $types, $body)
-	{
-		$method = new Method($name);
+		$methodTypes = array();
 
 		foreach ($types as $type)
 		{
 			switch ($type)
 			{
 				case self::METHOD_ABSTRACT:
-					$method->makeAbstract();
+					$methodTypes[] = "abstract";
 					break;
 
 				case self::METHOD_FINAL:
-					$method->makeFinal();
+					$methodTypes[] = "final";
 					break;
 
 				case self::METHOD_PRIVATE:
-					$method->makePrivate();
+					$methodTypes[] = "private";
 					break;
 
 				case self::METHOD_PUBLIC:
-					$method->makePublic();
+					$methodTypes[] = "public";
 					break;
 
 				case self::METHOD_PROTECTED:
-					$method->makeProtected();
+					$methodTypes[] = "protected";
 					break;
 
 				case self::METHOD_STATIC:
-					$method->makeAbstract();
+					$methodTypes[] = "static";
 					break;
 			}
 		}
 
-		foreach ($arguments as $type => $name)
-		{
-			$method->addArgument(new Argument($type, $name));
-		}
-
-		$method->setBody($body);
-
-		return $method;
+		$this->structure['classes'][$class]['methods'][$name] = array(
+			'body'          => $body,
+			'parameters'    => $parameters,
+			'types'         => $methodTypes,
+			'comment'       => $comment
+		);
 	}
 
 	/**
-	 * Generate class structure
+	 * Add constant
 	 *
-	 * @param $path
-	 * @param Object|Object $object
-	 * @param LicensePhpdoc | null $licenseDoc
-	 * @return File
+	 * @param $class    string
+	 * @param $name     string
+	 * @param $value    mixed
 	 * @author Djenad Razic
 	 */
-	public function generateClass($path, Object $object, $licenseDoc = NULL)
+	public function addConstant($class, $name, $value)
 	{
-		$file = File::make($path)->setStructure($object);
+		$this->structure['classes'][$class]['constants'][$name] = $value;
+	}
 
-		if ($licenseDoc !== NULL)
+	/**
+	 * Add property
+	 *
+	 * @param $class
+	 * @param $name
+	 * @param $value
+	 * @param $type
+	 * @author Djenad Razic
+	 */
+	public function addProperty($class, $name, $value, $type)
+	{
+		$typeValue = "private";
+
+		switch ($type)
 		{
-			$file->setLicensePhpdoc($licenseDoc);
+			case self::PROP_PRIVATE:
+				$typeValue = "private";
+				break;
+			case self::PROP_PUBLIC:
+				$typeValue = "public";
+				break;
+			case self::PROP_PROTECTED:
+				$typeValue = "protected";
+				break;
+			case self::PROP_STATIC:
+				$typeValue = "static";
+				break;
 		}
 
-		return $file;
+		$this->structure['classes'][$class]['properties'][$name] = array(
+			'type'  => $typeValue,
+			'value' => $value
+		);
+	}
+
+	/**
+	 * Add class namespace
+	 *
+	 * @param $class
+	 * @param $name
+	 * @author Djenad Razic
+	 */
+	public function addNamespace($class, $name)
+	{
+		$this->structure['classes'][$class]['namespace'] = $name;
+	}
+
+	/**
+	 * Add class references
+	 *
+	 * @param $class
+	 * @param $name
+	 * @author Djenad Razic
+	 */
+	public function addReference($class, $name)
+	{
+		$this->structure['classes'][$class]['references'][] = $name;
+	}
+
+	/**
+	 * Generate class output
+	 *
+	 * @param $class
+	 * @author Djenad Razic
+	 * @return string
+	 */
+	public function generate($class)
+	{
+		$data = array(
+			'root' => $this->structure['classes'][$class],
+			'className' => $class
+		);
+
+		return $this->engine->render('code/class', $data);
 	}
 }
+
+// Objects

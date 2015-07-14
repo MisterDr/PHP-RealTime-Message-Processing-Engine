@@ -44,6 +44,14 @@ class Config
 	// Base path name
 	public $base_folder = "MessageProcessor";
 
+	// MySql credentials
+	public $mysql = array(
+		'host'      => 'localhost',
+		'dbname'    => 'test',
+		'login'     => 'root',
+		'password'  => 'zglongara'
+	);
+
 	/**
 	 * Get base path
 	 *

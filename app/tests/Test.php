@@ -20,7 +20,6 @@ class Test extends \PHPUnit_Framework_TestCase {
 		$templates = new Engine($path);
 		$template = $templates->render('login');
 
-
 		//$routes = new Routes();
 		//$result = $routes->process(['test', 'testView']);
 

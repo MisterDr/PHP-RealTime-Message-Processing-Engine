@@ -18,10 +18,10 @@ class AREContext {
 	const TYPED_DEPENDENCY_ROOT = 'root';
 	const TYPED_DEPENDENCY_AMOD = 'amod';
 
-	// Dobj's are actually commands which we are process
+	// Dobj's are actually commands which we process
 	const TYPED_DEPENDENCY_DOBJ = 'dobj';
 
-	// Area of interest to extract command
+	// Area of interest to extract the command
 	const WORD_TYPE_VB = 'VB';
 	const WORD_TYPE_NN = 'NN';
 
