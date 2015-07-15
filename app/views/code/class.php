@@ -1,3 +1,4 @@
+<?="<?PHP\r\n" ?>
 <? if (isset($root['comment'])): ?>
 /**
 <? foreach ($root['comment'] as $comment) :?>
@@ -16,19 +17,16 @@ use <?= $reference ?>;
 <? endforeach ?>
 <? endif ?>
 
-class <?= $className ?> {
+class <?= $className ?><?= ! empty($root['extends']) ? " extends ".implode(', ', $root['extends']) : '' ?><?= ! empty($root['implementations']) ? " implements ".implode(', ', $root['implementations']) : '' ?> {
 <? if (isset($root['constants'])): ?>
-
 <? foreach ($root['constants'] as $key => $value) :?>
-<?= "\tconst ".$key ?> = <?= $value ?>;
+<?= "\tconst ".$key ?> = <?= $value."\r\n" ?>;
 <? endforeach ?>
-
 <? endif ?>
 <? if (isset($root['properties'])): ?>
 <? foreach ($root['properties'] as $key => $value) :?>
-<?= "\t".$value['type'] ?> <?= '$'.$key ?> = <?= $value['value'] ?>;
+<?= "\t".$value['type'] ?> <?= '$'.$key ?> = <?= $value['value']."\r\n" ?>;
 <? endforeach ?>
-
 <? endif ?>
 <? if (isset($root['methods'])): ?>
 <? foreach ($root['methods'] as $methodName => $value) :?>
@@ -39,13 +37,13 @@ class <?= $className ?> {
 <? endforeach ?>
 <?= "\t*/\r\n" ?>
 <? endif ?>
-<?= "\t".implode(' ', $value['types']) ?> <?= $methodName." (" ?>
+<?= "\t".implode(' ', $value['types']) ?> <?= "function ".$methodName."(" ?>
 <?= \app\base\helpers\StringHelper::implodeKvp($value['parameters'], '$').")\r\n" ?>
 <?= "\t{\r\n" ?>
 <? foreach ($value['body'] as $body) :?>
 <?="\t\t".$body."\r\n" ?>
 <? endforeach ?>
-<?= "\t}\r\n" ?>
+<?= "\t}\r\n\r\n" ?>
 <? endforeach ?>
 <? endif ?>
 }

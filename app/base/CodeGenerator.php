@@ -24,6 +24,11 @@ class CodeGenerator {
 	const PROP_STATIC       = 4;
 
 	/**
+	 * @var string
+	 */
+	protected $className;
+
+	/**
 	 * @var Config
 	 */
 	protected $config;
@@ -51,12 +56,22 @@ class CodeGenerator {
 		'classes' => array()
 	);
 
-	public function __construct()
+	/**
+	 * @param $name string cClass name
+	 * @param array $comment array
+	 */
+	public function __construct($name = NULL, $comment = array())
 	{
 		$this->config = new Config();
 		$this->viewPath = $this->config->getBasePath() . '/app/views/';
 
 		$this->engine = new Engine($this->viewPath);
+
+		if ($name !== NULL)
+		{
+			$this->className = $name;
+			$this->addClass($name, $comment);
+		}
 	}
 
 	/**
@@ -73,6 +88,8 @@ class CodeGenerator {
 		$this->structure['classes'][$name]['constants'] = array();
 		$this->structure['classes'][$name]['properties'] = array();
 		$this->structure['classes'][$name]['references'] = array();
+		$this->structure['classes'][$name]['implementations'] = array();
+		$this->structure['classes'][$name]['extends'] = "";
 		$this->structure['classes'][$name]['namespace'] = "";
 		$this->structure['classes'][$name]['comment'] = $comment;
 	}
@@ -88,8 +105,10 @@ class CodeGenerator {
 	 * @param $comment    array
 	 * @author Djenad Razic
 	 */
-	public function addMethod($class, $name, $types, $parameters, $body, $comment)
+	public function addMethod($name, $types, $parameters = array(), $body = array(), $comment = array(), $class = NULL)
 	{
+		$class = $class === NULL ? $this->className : $class;
+
 		$methodTypes = array();
 
 		foreach ($types as $type)
@@ -138,8 +157,10 @@ class CodeGenerator {
 	 * @param $value    mixed
 	 * @author Djenad Razic
 	 */
-	public function addConstant($class, $name, $value)
+	public function addConstant($name, $value, $class = NULL)
 	{
+		$class = $class === NULL ? $this->className : $class;
+
 		$this->structure['classes'][$class]['constants'][$name] = $value;
 	}
 
@@ -152,8 +173,10 @@ class CodeGenerator {
 	 * @param $type
 	 * @author Djenad Razic
 	 */
-	public function addProperty($class, $name, $value, $type)
+	public function addProperty($name, $value, $type, $class = NULL)
 	{
+		$class = $class === NULL ? $this->className : $class;
+
 		$typeValue = "private";
 
 		switch ($type)
@@ -185,8 +208,10 @@ class CodeGenerator {
 	 * @param $name
 	 * @author Djenad Razic
 	 */
-	public function addNamespace($class, $name)
+	public function addNamespace($name, $class = NULL)
 	{
+		$class = $class === NULL ? $this->className : $class;
+
 		$this->structure['classes'][$class]['namespace'] = $name;
 	}
 
@@ -197,9 +222,39 @@ class CodeGenerator {
 	 * @param $name
 	 * @author Djenad Razic
 	 */
-	public function addReference($class, $name)
+	public function addReference($name, $class = NULL)
 	{
+		$class = $class === NULL ? $this->className : $class;
+
 		$this->structure['classes'][$class]['references'][] = $name;
+	}
+
+	/**
+	 * Add implementation
+	 *
+	 * @param $class
+	 * @param $name
+	 * @author Djenad Razic
+	 */
+	public function addImplementation($name, $class = NULL)
+	{
+		$class = $class === NULL ? $this->className : $class;
+
+		$this->structure['classes'][$class]['implementations'][] = $name;
+	}
+
+	/**
+	 * Add class inheritance
+	 *
+	 * @param $class
+	 * @param $name
+	 * @author Djenad Razic
+	 */
+	public function addExtends($name, $class = NULL)
+	{
+		$class = $class === NULL ? $this->className : $class;
+
+		$this->structure['classes'][$class]['extends'][] = $name;
 	}
 
 	/**
@@ -209,8 +264,10 @@ class CodeGenerator {
 	 * @author Djenad Razic
 	 * @return string
 	 */
-	public function generate($class)
+	public function generate($class = NULL)
 	{
+		$class = $class === NULL ? $this->className : $class;
+
 		$data = array(
 			'root' => $this->structure['classes'][$class],
 			'className' => $class

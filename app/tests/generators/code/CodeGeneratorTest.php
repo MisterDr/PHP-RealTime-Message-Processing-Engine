@@ -5,7 +5,6 @@
 
 namespace app\tests\generators\code;
 
-
 use app\base\CodeGenerator;
 
 class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
@@ -25,6 +24,9 @@ class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
 
 		$codeGenerator->addReference('Meho', 'app\base\CodeGenerator3');
 		$codeGenerator->addNamespace('Meho', 'app\base');
+		$codeGenerator->addImplementation('Meho', 'CountryInterface');
+		$codeGenerator->addImplementation('Meho', 'CurrencyInterface');
+		$codeGenerator->addExtends('Meho', 'Base');
 
 		$codeGenerator->addConstant('Meho', 'test', '1');
 

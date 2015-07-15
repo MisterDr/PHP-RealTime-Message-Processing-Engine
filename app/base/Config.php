@@ -20,6 +20,17 @@ class Config
 	const PARSER_SAVE_PATH = 'app/are/external/parser/stanford-parser-full-2015-04-20.zip';
 	const PARSER_PATH = 'app/are/external/parser/stanford-parser-full-2015-04-20/';
 
+	/**
+	 * @var bool Check if autoloader is registered
+	 */
+	private static $autoloader = false;
+
+	/**
+	 * One quickie to load defined files
+	 * @var array
+	 */
+	public static $autoload_files = array();
+
 	// Processes path
 	public $process_path = 'message_service';
 
@@ -64,5 +75,32 @@ class Config
 		$dir = array_search($this->base_folder, $path);
 
 		return implode('/', array_slice($path, 0, $dir + 1));
+	}
+
+	/**
+	 * Registers Asynchronio autoloader
+	 *
+	 * @param bool $prepend Whether to prepend the autoloader instead of appending
+	 */
+	static public function register($prepend = false) {
+		if (self::$autoloader === true) {
+			return;
+		}
+
+		spl_autoload_register(array(__CLASS__, 'autoload'), true, $prepend);
+		self::$autoloader = true;
+	}
+
+	/**
+	 * Handles auto loading the classes which compose cannot catch
+	 *
+	 * @param string $class
+	 */
+	static public function autoload($class) {
+
+		if (in_array($class, array_keys(self::$autoload_files)))
+		{
+			require self::$autoload_files[$class];
+		}
 	}
 }

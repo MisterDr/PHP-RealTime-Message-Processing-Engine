@@ -24,7 +24,10 @@ class MigratorTest extends \PHPUnit_Framework_TestCase {
 
 		$migrator = new Migrator();
 
-		$code = $migrator->create('test');
+//		$code = $migrator->create('test', array(
+//			'id' => 'integer',
+//			'text_field' => 'text'
+//		));
 
 
 
